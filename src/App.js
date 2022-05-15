@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
 //
-import { useEffect, useContext } from 'react';
-import AuthContext, { AuthContextProvider } from './store/auth-context';
+import { useContext } from 'react';
+import AuthContext from './store/auth-context';
 
 function App() {
+  // access the AuthContext
   const ctx = useContext(AuthContext);
   return (
 
@@ -27,6 +28,9 @@ export default App;
 
 // OR USE THE CONTEXT JUST LOCALLY:
 
+// import {useState, useEffect} from 'react';
+// import {AuthContextProvider} from './store/auth-context';
+///////
 // return (
 //   <AuthContextProvider>
 //     <AuthContext.Consumer>

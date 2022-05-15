@@ -6,6 +6,7 @@ import AuthContext from '../../store/auth-context';
 import { useContext } from 'react';
 
 const Navigation = (props) => {
+  // access the AuthContext
   const ctx = useContext(AuthContext);
 
   return (

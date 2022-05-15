@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import AuthContext from '../../store/auth-context';
 
 const MainHeader = () => {
+  // access the AuthContext
   const ctx = useContext(AuthContext);
   return (
     <header className={classes['main-header']}>

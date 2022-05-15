@@ -8,6 +8,7 @@ import { useEffect, useReducer, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
 import Input from './Input';
 
+// USE OF REDUCER FUNCTION
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
     return {
@@ -57,15 +58,15 @@ const Login = () => {
 
   //example of object destructuring:
   const { isValid: emailIsValid } = emailState; // now emailIsValid will contain the value of emailState.isValid
-  const { isValid: passwordIsValid } = passState; // now passwordIsValid will contain the value of passState.isValid
-  var { value: passwordValue } = passState; // now passwordIsValid will contain the value of passState.isValid
+  const { isValid: passwordIsValid } = passState; // now passwordIsValid will contain the value of passState.isValid 
 
   // check if format is correct
   useEffect(() => {
     setFormIsValid(
-      emailIsValid && passwordIsValid // used the destructured values
+      // used the destructured values
+      emailIsValid && passwordIsValid 
     );
-  }, [emailState.value, passState.value])
+  }, [emailState.value, passState.value, emailIsValid, passwordIsValid])
   // simulate http requests
   useEffect(() => {
     const sendHttpReq = setTimeout(() => {
@@ -99,6 +100,7 @@ const Login = () => {
 
   };
 
+
   const validateEmailHandler = () => {
     // setEmailIsValid(emailState.value.includes('@'));
     dispatchEmail({ type: "USER_BLUR" });
@@ -107,11 +109,6 @@ const Login = () => {
   const validatePasswordHandler = () => {
     // setPasswordIsValid(enteredPassword.trim().length > 6);
     dispatchPass({ type: "USER_BLUR" });
-
-    console.log(passwordValue);
-    passwordValue = "ceapa";
-    console.log(passwordValue);
-
   };
 
   const submitHandler = (event) => {
