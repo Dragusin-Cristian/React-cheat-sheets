@@ -4,7 +4,7 @@ import Card from './Card';
 import Button from './Button';
 import classes from './ErrorModal.module.css';
 //
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom"; // for using portals and DOM manipulation
 
 const Backdrop = (props) => {
   return (
@@ -28,11 +28,14 @@ const Modal = (props) => {
   );
 }
 
+// PORTALS:
 const ErrorModal = (props) => {
   return (
     <React.Fragment>
+      {/* renders the <Backddrop/> component inside the "backdrop-root" dom element */}
       {ReactDOM.createPortal(<Backdrop onConfirm={props.onConfirm} />,
-        document.getElementById("backdrop-root"))}
+        document.getElementById("backdrop-root"))} 
+        {/* renders the <Modal/> component inside the "overlay-root" dom element */}
       {ReactDOM.createPortal(<Modal title={props.title} message={props.message} onConfirm={props.onConfirm} />,
         document.getElementById("overlay-root"))}
     </React.Fragment>

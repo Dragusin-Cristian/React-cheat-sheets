@@ -22,6 +22,7 @@ const AddUser = (props) => {
     const usernameInput = usernameInputRef.current.value;
     const ageInput = ageInputRef.current.value;
 
+    // check if username input is valid (not empty)
     if (usernameInput.trim().length === 0 || ageInput.trim().length === 0) {
       setError({
         title: 'Invalid input',
@@ -29,6 +30,7 @@ const AddUser = (props) => {
       });
       return;
     }
+    // check if age input is valid (not empty/0)
     if (+enteredAge < 1) {
       setError({
         title: 'Invalid age',
@@ -36,11 +38,14 @@ const AddUser = (props) => {
       });
       return;
     }
+    // adds the user to usersList (from App.js)
     props.onAddUser(usernameInput, ageInput);
 
+    // sets back the inputs to empty
     usernameInputRef.current.value = '';
     ageInputRef.current.value = '';
 
+    // sets back the state to empty
     setEnteredUsername('');
     setEnteredAge('');
   };
