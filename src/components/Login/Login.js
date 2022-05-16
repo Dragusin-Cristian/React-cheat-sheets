@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -8,37 +8,52 @@ import { useEffect, useReducer, useContext } from 'react';
 import AuthContext from '../../store/auth-context';
 import Input from './Input';
 
-// USE OF REDUCER FUNCTION
+// USE OF A REDUCER FUNCTION
 const emailReducer = (state, action) => {
+  // check for onChange from email Input
   if (action.type === "USER_INPUT") {
+    //set the emailState:
     return {
+      // values from the dispatchEmail function call
       value: action.val,
       isValid: action.val.includes('@')
     };
+    // check for onBlur from email Input (lost focus)
   } else if (action.type === "USER_BLUR") {
+    //set the emailState:
     return {
+      // values from last state snapshot
       value: state.value,
       isValid: state.value.includes('@')
     };
   };
+  //set the emailState (default values for the first render):
   return {
     value: '',
     isValid: false
   }
 }
 
+// REDUCER FUNCTION FOR PASSWORD:
 const passReducer = (state, action) => {
+  // check for onChange from password Input
   if (action.type === "USER_INPUT") {
+    // set the passState value
     return {
+      // values from the dispatchPass function call
       value: action.val,
       isValid: action.val.trim().length > 6
     };
+    // check for onBlur from password Input (lost focus):
   } else if (action.type === "USER_BLUR") {
+    // set the passState value
     return {
+      // values for the last state snapshot 
       value: state.value,
       isValid: state.value.trim().length > 6
     };
   };
+  //set the passState (default values for the first render):
   return {
     value: '',
     isValid: false
@@ -47,12 +62,17 @@ const passReducer = (state, action) => {
 
 const Login = () => {
   const ctx = useContext(AuthContext);
+  // USESTATE METHOD:
   // const [enteredEmail, setEnteredEmail] = useState('');
   // const [emailIsValid, setEmailIsValid] = useState();
   // const [enteredPassword, setEnteredPassword] = useState('');
   // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+  // GO TO <Input> COMPONENT, THERE IS CUSTOMISED TO EXPORT REF 
+  const emailRef = useRef();
+  const passRef = useRef();
 
+  // USEREDUCER METHOD:
   const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: null });
   const [passState, dispatchPass] = useReducer(passReducer, { value: '', isValid: null })
 
@@ -64,25 +84,36 @@ const Login = () => {
   useEffect(() => {
     setFormIsValid(
       // used the destructured values
-      emailIsValid && passwordIsValid 
+      // use this approach instead of watching 
+      // emailState.isValid and passState.isValid because 
+      // you want to watch only some nested  properties (isValid), NOT THE ALL STATE VALUES
+      emailIsValid && passwordIsValid
     );
-  }, [emailState.value, passState.value, emailIsValid, passwordIsValid])
-  // simulate http requests
-  useEffect(() => {
-    const sendHttpReq = setTimeout(() => {
-      console.log("Verifying if user exists in db...");
+    //add in the dependencies array only the things that can change 
+    // when the component or parent re-renders
+  }, [emailIsValid, passwordIsValid])
 
+  // useEffect for each change of the emailState.value (changes on onChange from email Input )
+  useEffect(() => {
+    // simulate http request function for checking if user exists in db
+    const sendHttpReq = setTimeout(() => {
+      // http simulation function:
+      console.log("Verifying if user exists in db...");
     }, 500)
 
-    // cleanup function 
+    // CLEANUP FUNCTION USECASE: (debouncing)
+    // (this function executes before the sendHttpReq timer finishes)
+    // therefore, the http simulation function executes only after 500 ms,
+    // if the timer is not cleared
     return () => {
       console.log("CLEANUP");
       clearTimeout(sendHttpReq);
     }
-  }, [emailState.value])
+  }, [emailState.value]);
+
+  // onChange from email Input (on key stroke):
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
-
     dispatchEmail({ type: "USER_INPUT", val: event.target.value })
     setFormIsValid(
       event.target.value.includes('@') && passState.value.trim().length > 6
@@ -90,6 +121,7 @@ const Login = () => {
 
   };
 
+  // onChange from password Input:
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(event.target.value);
 
@@ -100,12 +132,14 @@ const Login = () => {
 
   };
 
-
+  // onBlur from email Input (lost focus)
   const validateEmailHandler = () => {
-    // setEmailIsValid(emailState.value.includes('@'));
+    // setEmailIsValid(emailState.value.includes('@')); // useState version
+    // calls the dispatchEmail, which calls the emailReducer function
     dispatchEmail({ type: "USER_BLUR" });
   };
 
+  // onBlur from password Input (lost focus)
   const validatePasswordHandler = () => {
     // setPasswordIsValid(enteredPassword.trim().length > 6);
     dispatchPass({ type: "USER_BLUR" });
@@ -113,7 +147,14 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    ctx.onLogin(emailState.value, passState.value);
+    if(formIsValid){
+      ctx.onLogin(emailState.value, passState.value);
+    }else if(!emailIsValid){
+      // call the function from Input  
+     emailRef.current.focus();
+    }else{
+      passRef.current.focus();
+    }
   };
 
   return (
@@ -126,7 +167,8 @@ const Login = () => {
           id="email"
           value={emailState.value}
           onChange={emailChangeHandler}
-          onBlur={validateEmailHandler} />
+          onBlur={validateEmailHandler} 
+          ref={emailRef}/>
         <Input isValid={passState.isValid}
           For="password"
           name="Password"
@@ -134,9 +176,13 @@ const Login = () => {
           id="password"
           value={passState.value}
           onChange={passwordChangeHandler}
-          onBlur={validatePasswordHandler} />
+          onBlur={validatePasswordHandler} 
+          ref={passRef}/>
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit"
+            className={classes.btn}
+            // disabled={!formIsValid}
+            >
             Login
           </Button>
         </div>
