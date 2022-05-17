@@ -1,6 +1,6 @@
-# Purpose of this branch
+# Purpose of this branch (1)
 
-### understand the basic concepts of Redux.
+### understand the basic concepts of Redux
 
 * index.js is commented
 * auth_redux.js is not
