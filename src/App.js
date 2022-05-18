@@ -1,4 +1,5 @@
 import Counter from './components/Counter';
+// import Counter_method_1 from './components/Counter_method_1';
 //
 import { Fragment } from "react";
 import Auth from "./components/Auth.js";
@@ -14,6 +15,7 @@ function App() {
        <Header />
       {isLoggedIn ? <UserProfile /> : <Auth />}
       <Counter />
+      {/* <Counter_method_1 /> */}
     </Fragment>
   );
 }

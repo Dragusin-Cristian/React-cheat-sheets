@@ -1,8 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"; // __ import hooks
+// Hooks
+import { createSlice } from "@reduxjs/toolkit"; 
 
-const initialCounter = { counter: 0, showCounter: true }; // __ initial state
+// Initial state:
+const initialCounter = { counter: 0, showCounter: true }; 
 
-const counterSlice = createSlice({ // __ make a slice
+// Make the slice
+const counterSlice = createSlice({ 
     name: 'counter',
     initialState: initialCounter,
     reducers: {
@@ -21,6 +24,8 @@ const counterSlice = createSlice({ // __ make a slice
     }
 });
 
-export const counterActions = counterSlice.actions; // __ export actions
+// Export the actions
+export const counterActions = counterSlice.actions;
 
+// Export default the counterSlice
 export default counterSlice;

@@ -1,12 +1,15 @@
 import classes from './Counter.module.css';
 //
-import { useSelector, useDispatch } from 'react-redux'; // __ do the imports
-import { counterActions } from '../store/counter_slice.js'; // __ import actions
+import { useSelector, useDispatch } from 'react-redux';
+import { counterActions } from '../store/counter_slice.js';
 
 const Counter = () => {
-  const counter = useSelector(state => state.counter.counter); // __  get the states
-  const showCounter = useSelector(state => state.counter.showCounter); // useSelector gets the state
-  const dispatch = useDispatch(); // useDispatch gets the action // __ useDispatch
+  // useSelector gets the state from the store
+  // first counter gets from the counterSlice state, and the secound .counter gets the specific value
+  const counter = useSelector(state => state.counter.counter);
+  const showCounter = useSelector(state => state.counter.showCounter);
+  // use Dispatch gets the action from the store
+  const dispatch = useDispatch(); 
 
 
   const incrementHandler = () => {

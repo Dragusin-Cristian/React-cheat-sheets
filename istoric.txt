@@ -1,0 +1,90 @@
+    1  npx create-react-project user_panel -y
+    2  git pull https://github.com/MLSA-ASE/Platforma_Activ-Inactiv.git
+    3  git init
+    4  git add https://github.com/MLSA-ASE/Platforma_Activ-Inactiv.git
+    5  git clone https://github.com/MLSA-ASE/Platforma_Activ-Inactiv.git
+    6  cd Platforma_Activ-Inactiv/
+    7  dir
+    8  git checkout tabel_cristi
+    9  git commit -m ""
+   10  git config --global user.emaill "dragusincristian609@gmail.com"
+   11  git config --global user.name "Dragusin Cristian"
+   12  git commit -m ""
+   13  git login
+   14  git --help
+   15  cd ..
+   16  git checkout tabel_cristi
+   17  git stash
+   18  git checkout tabel_cristi
+   19  git pull
+   20  git checkout tabel
+   21  git clone https://github.com/academind/react-complete-guide-code.git
+   22  git checkout 19-advanced-redux
+   23  git checkout "19-advanced-redux"
+   24  git checkout -
+   25  git checkout 19-advanced-redux
+   26  git checkout 16-working-with-forms
+   27  dir
+   28  cd react-complete-guide-code/
+   29  git checkout 16-working-with-forms
+   30  git checkout 19-advanced-redux
+   31  git clone https://github.com/academind/react-complete-guide-code.git
+   32  ls
+   33  dir
+   34  cd react-complete-guide-code/
+   35  git checkout 14-sending-http-requests
+   36  npx create-react-app "section 20 - React Router" 
+   37  npx create-react-app 'section 20 - React Router'
+   38  npx create-react-app react_router
+   39  touch index.html
+   40  touch no-typescript.js
+   41  npm install -g typescript
+   42  npx create-react-app my-app --template typescript
+   43  git clone https://gitlab.com/idacos-digital-srl/business-budgets-tracker
+   44  git clone https://gitlab.com/idacos-digital-srl/business-budgets-tracker
+   45  git clone https://gitlab.com/idacos-digital-srl/business-budgets-tracker
+   46  git clone https://gitlab.com/idacos-digital-srl/business-budgets-tracker.git
+   47  git clone https://gitlab.com/idacos-digital-srl/business-budgets-tracker.git
+   48  npx create-react-app useCallbackInItsBeauty
+   49  npx create-react-app useCallbackInItsBeauty
+   50  npx create-react-app use_callback_in_its_beauty
+   51  cd use_callback_in_its_beauty/
+   52  git init
+   53  npm i create-react-app -g
+   54  npm init create-react-app mui
+   55  npx create-react-app material_ui
+   56  wxit
+   57  exit
+   58  npx create-react-app renting_platform
+   59  npx create-react-app renting_platform
+   60  cd renting_platform/
+   61  npx create-react-app 'tutorial mui net ninja'
+   62  npx create-react-app mui_tutorial_net_ninja
+   63  cd mui_tutorial_net_ninja/
+   64  npm install @mui/material @emotion/react @emotion/styled\
+   65  npm install @mui/material @emotion/react @emotion/styled
+   66  npm i react-router-dom
+   67  git clone https://github.com/iamshaunjp/material-ui-tut.git
+   68  remote add origin https://github.com/Dragusin-Cristian/React-cheat-sheets.git
+   69  git init
+   70  remote add origin https://github.com/Dragusin-Cristian/React-cheat-sheets.git
+   71  git remote add origin https://github.com/Dragusin-Cristian/React-cheat-sheets.git
+   72  git config --global user.email "dragusincristian609@.com"
+   73  git branch section_18_Diving_into_Redux
+   74  git branch -a
+   75  git config --global user.email "dragusincristian609@gmail.com"
+   76  git branch section_18_Diving_into_Redux
+   77  git push --set-upstream origin main
+   78  git add .
+   79  git commit -m "First Commmit"
+   80  git branch section_18_Diving_into_Redux
+   81  git add .
+   82  git commit -m "First Commmit"
+   83  git checkout  section_18_Diving_into_Redux 
+   84  git add .
+   85  git commit -m "First Commmit"
+   86  git push
+   87   git push --set-upstream origin section_18_Diving_into_Redux
+   88  echo history > istoric.txt
+   89  history
+   90  history > istoric.txt

@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit"; // __ import hooks
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialAuth = { isLoggedIn: false }; // __ initial state
+// initial state
+const initialAuth = { isLoggedIn: false }; 
 
-const authSlice = createSlice({ // __ make a slice
+// make a slice
+const authSlice = createSlice({ 
     name: "auth",
     initialState: initialAuth,
     reducers: {
@@ -15,6 +17,7 @@ const authSlice = createSlice({ // __ make a slice
     }
 });
 
-export const authActions = authSlice.actions; // __ export actions
+// export actions
+export const authActions = authSlice.actions; 
 
 export default authSlice;
