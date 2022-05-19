@@ -46,6 +46,8 @@ const Counter = () => {
 export default Counter;
 
 
+// CLASS COMPONENT EXAMPLE:
+//
 // import classes from './Counter.module.css';
 // import React from "react";
 // import {connect} from "react-redux";
