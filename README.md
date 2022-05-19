@@ -1,5 +1,4 @@
 # Purpose of this branch
-
 ## Why use Redux instead of Context API?
 ### For more complex context management
 
@@ -23,3 +22,8 @@ The state is overwritten, NEVER CHANGED (mutated)
 
 you can 'mutate' the state, because immer will overwrite the state
 slice => multiple slices
+
+---
+
+## credits for the Udemy course:  
+### https://www.udemy.com/course/react-the-complete-guide-incl-redux/
