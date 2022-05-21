@@ -1,6 +1,6 @@
 # Purpose of this branch
 
-## How to use Portals:
+## How to use Portals and Refs:
 
 * Go to /src/UI/ErrorModal.js and there is a portal useCase  
 
