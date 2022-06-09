@@ -1,4 +1,4 @@
-// THE "SAINT" REDUCER FUNCTIO
+// THE "SAINT" REDUCER FUNCTION
 // Import it from another file
 export const switchReducer = (state, action) => {
     if (action.type === 'switchMain') {
